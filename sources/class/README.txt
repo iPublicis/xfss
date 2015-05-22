@@ -8,7 +8,7 @@ The class uses a random trick to select the encryption method that is used. This
 
 The file names are also obfuscated, so a sneaker will not know what the original format was.
 
-This class was mainly developed to be used with GPL'ed Care2002 Medical Information System (www.care2x.org). However, its use was postponed because most of the files uploaded were images and most of them do not have any personal identifiable info on them. 
+This class was mainly developed to be used with GPL'ed Care2x Medical Information System (www.care2x.org). However, its use was postponed because most of the files uploaded were images and most of them do not have any personal identifiable info on them. 
 
 This class, in a broader sense, has yet a long way to go. For now it is simply a sub-class of part of the RC4Crypt class. It allows an easy process of encryption and decryption of uploaded files. 
 
