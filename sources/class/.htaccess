@@ -1,0 +1,111 @@
+# $Id: .htaccess,v 1.0.1 2009/02/12 03:00:21 humaneasy Exp $ 
+#
+# EFC/XFSS - Extended File Stealth System
+# @Version: 1.0.1 
+# @Released: 05/27/03 
+# @Donation: http://smsh.me/7kit
+#
+# Simple protection for SECURED directory under Apache
+# 
+# Copyright (C) 2003-2009 Humaneasy, brainVentures Network.  
+# Licensed under GNU Lesser General Public License 3 or above. 
+# Please visit http://www.gnu.org to now more about it. 
+# 
+#
+# This is used with Apache WebServers
+#
+# The following makes adjustments to the SSL protocol for Internet
+# Explorer browsers
+#
+# For this to work, you must include the parameter 'Limit' to the
+# AllowOverride configuration
+#
+# Example:
+#
+#<Directory "/usr/local/apache/htdocs">
+#  AllowOverride Limit
+#</Directory>
+#
+# 'All' with also work. (This configuration is in your
+# apache/conf/httpd.conf file)
+
+<IfModule mod_setenvif.c>
+  <IfDefine SSL>
+    SetEnvIf User-Agent ".*MSIE.*" \
+             nokeepalive ssl-unclean-shutdown \
+             downgrade-1.0 force-response-1.0
+  </IfDefine>
+</IfModule>
+
+# This is used with Apache WebServers
+# The following blocks direct HTTP requests in this directory recursively
+#
+# For this to work, you must include the parameter 'Limit' to the AllowOverride configuration
+#
+# Example:
+#
+#<Directory "/usr/local/apache/htdocs">
+#  AllowOverride Limit
+#
+# 'All' with also work. (This configuration is in your apache/conf/httpd.conf file)
+#
+# This does not affect PHP include/require functions
+#
+# Example: http://server/secure/my_file.php will not work
+
+<Files *.php>
+Order Deny,Allow
+Deny from all
+</Files>
+
+# This is used with Apache WebServers
+# The following blocks downloads from this directory recursively
+#
+# For this to work, you must include the parameter 'Limit' to the AllowOverride configuration
+#
+# Example:
+#
+#<Directory "/usr/local/apache/htdocs">
+#  AllowOverride Limit
+#
+# 'All' with also work. (This configuration is in your apache/conf/httpd.conf file)
+#
+# This does not affect PHP include/require functions
+#
+# Example: http://server/secure/data/ will not work
+
+AuthType Basic
+AuthName "No access"
+AuthUserFile .htnopasswd
+AuthGroupFile /dev/null
+Require valid-user
+
+# DISCLAIMER
+#
+# THIS SOFTWARE IS PROVIDED BY THE PROJECT AND CONTRIBUTORS ``AS IS'' AND
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions
+# are met:
+# 
+# 1. Redistributions of source code must retain the above copyright
+#    notice, this list of conditions and the following disclaimer.
+# 
+# 2. Redistributions in binary form must reproduce the above copyright
+#    notice, this list of conditions and the following disclaimer in the
+#    documentation and/or other materials provided with the distribution.
+# 
+# 3. Neither the name of the project nor the names of its contributors
+#    may be used to endorse or promote products derived from this software
+#    without specific prior written permission.
+# 
+# THIS SOFTWARE IS PROVIDED BY THE PROJECT AND CONTRIBUTORS ``AS IS'' AND
+# ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+# IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR 
+# PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE PROJECT OR CONTRIBUTORS 
+# BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR 
+# CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF 
+# SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR 
+# BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
+# WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR 
+# OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF 
+# ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.

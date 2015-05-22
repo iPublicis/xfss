@@ -1,0 +1,16 @@
+{
+  "require":
+  {
+    "phpclasses/efc_xfss": ">=1.0.1"
+  },
+  "repositories":
+  [
+    {
+      "type": "composer",
+      "url": "http:\/\/www.phpclasses.org\/"
+    },
+    {
+      "packagist": false
+    }
+  ]
+}
