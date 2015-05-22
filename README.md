@@ -16,6 +16,6 @@ The only files that you need to look at into are index.php, srcefc.php, mkconfig
 
 The documentation is inside these PHP scripts.
 
-You also need to search for the definition of __SECURE_PATH__, and modify the path in the above PHP files.
+You also need to search for the definition of `__SECURE_PATH__`, and modify the path in the above PHP files.
 
 The class is also available at http://www.phpclasses.org/efc_xfss
